@@ -64,10 +64,6 @@ def submit_assignment(request:HttpRequest):
 
         return CustomResponse("Analyzed SuccessFull", data=context)
 
-    
-
-    
-        
 
 
     return render(request, "submit_assignment.html")

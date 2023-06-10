@@ -113,7 +113,7 @@
 
                         <div class="row">
 
-                            <button id="turn-in" class="turn-in-btn font-weight-xmd" data-bs-target="#staticBackdrop2" data-bs-toggle="modal" data-bs-dismiss="modal" disabled>Turn in</button>
+                            <button id="turn-in" class="turn-in-btn font-weight-xmd" disabled>Turn in</button>
                         </div>
 
                     </div>
@@ -123,30 +123,25 @@
 
 
                 </div>
+
+              
 
                 <div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
-        
-        
                             <div class="modal-body">
                                 <div class="text-center">
-                                    <img src="{% static 'img/check.png' %}" width="70" height="70">
+                                    <img id="plag_suc_or_fail_img" src="{% static 'img/check.png' %}" width="70" height="70">
                                 </div>
-        
                                 <div class="pay-success-info text-center">
-                                    <h2 class="go-down-sm">Submitted</h2>
-        
-                                    <p class="go-down-md reciept-no">Your work has been analysed and  approved for submission</p>
-        
+                                    <h2 id="plag_success_fail_info" class="go-down-sm"></h2>
+                                    <p id="plag_success_fail_message" class="go-down-md reciept-no"></p>
                                 </div>
-        
-        
                             </div>
-                        
                         </div>
                     </div>
                 </div>
+                
 
 
             </div>

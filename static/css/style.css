@@ -207,6 +207,17 @@
     border: 1.9px solid #e0e0e0;
 }
 
+.modal-backdrop {
+    opacity: 0.5 ;
+    z-index: 1040 ;
+}
+
+
+.modal {
+    z-index: 1050;
+}
+
+
 
 @keyframes fadeOut {
 	from { opacity: 1; }

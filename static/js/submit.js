@@ -119,7 +119,75 @@ turnInButton.addEventListener("click", async ()=>{
 
     const file = assignmentUpload.files[0]
 
-    console.log(await submitAssignment(file))
+    const response = await submitAssignment(file)
+
+    const is_plagiarized = response.data.is_plagiarized
+
+    console.log(is_plagiarized)
+
+    const successModal = new bootstrap.Modal(document.getElementById('staticBackdrop2'));
+
+
+
+    if (response.success === true && is_plagiarized === false){
+
+
+
+        successModal.show()
+
+        const plag_suc_or_fail_img = document.getElementById("plag_suc_or_fail_img")
+
+        const plag_success_fail_info = document.getElementById("plag_success_fail_info")
+
+
+        const plag_success_fail_message = document.getElementById("plag_success_fail_message")
+
+
+        plag_success_fail_info.textContent = "Success!"
+
+        plag_success_fail_message.textContent = "Your work has been analysed and  approved for submission onlknlk";
+
+        plag_suc_or_fail_img.src = "/static/img/check.png"
+
+
+    }
+
+    // else if (result.success === false && result.data === "00"){
+
+    //     pay_modal.classList.remove('show')
+    //     pay_modal.style.display = 'none'
+    //     pay_modal.setAttribute('aria-hidden', 'true');
+
+    //     successModal.classList.add('fade');
+
+    //     setTimeout(function() {
+    //         successModal.classList.add('show');
+    //     }, 100);
+
+    //     successModal.style.display = 'block';
+    //     successModal.setAttribute('aria-hidden', 'false');
+
+    //     const pay_suc_or_fail_img = document.getElementById("pay_suc_or_fail_img")
+
+    //     const pay_success_fail_info = document.getElementById("pay-success-fail-info")
+
+    //     const pay_success_fail_message = document.getElementById("pay-success-fail-message")
+
+    //     const redirect_msg = document.getElementById("redirect-msg")
+
+
+    //     pay_success_fail_info.textContent = "Transaction Failed"
+
+    //     pay_success_fail_message.textContent = result.message
+
+    //     pay_suc_or_fail_img.src = "/static/img/x-mark.png"
+
+    //     payRedirectToDashboard(redirect_msg);
+    
+
+        
+    // }
+
 
 
 
