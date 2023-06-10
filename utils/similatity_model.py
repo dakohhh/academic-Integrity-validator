@@ -51,6 +51,8 @@ class AssigmeAnalyZer():
 
             similarity_score = cosine_similarity(approved_ass_vector.reshape(1, -1), self.create_vector(self.assignment).reshape(1, -1))[0][0]
 
+            print(similarity_score * 100)
+
             if similarity_score * 100 > threshold:
                 return True
 

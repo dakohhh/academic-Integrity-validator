@@ -145,48 +145,35 @@ turnInButton.addEventListener("click", async ()=>{
 
         plag_success_fail_info.textContent = "Success!"
 
-        plag_success_fail_message.textContent = "Your work has been analysed and  approved for submission onlknlk";
+        plag_success_fail_message.textContent = "Your work has been analysed and  approved for submission.";
 
         plag_suc_or_fail_img.src = "/static/img/check.png"
 
 
     }
 
-    // else if (result.success === false && result.data === "00"){
+    else if (response.success === true && is_plagiarized === true){
 
-    //     pay_modal.classList.remove('show')
-    //     pay_modal.style.display = 'none'
-    //     pay_modal.setAttribute('aria-hidden', 'true');
+        successModal.show()
+      
 
-    //     successModal.classList.add('fade');
+        const plag_suc_or_fail_img = document.getElementById("plag_suc_or_fail_img")
 
-    //     setTimeout(function() {
-    //         successModal.classList.add('show');
-    //     }, 100);
-
-    //     successModal.style.display = 'block';
-    //     successModal.setAttribute('aria-hidden', 'false');
-
-    //     const pay_suc_or_fail_img = document.getElementById("pay_suc_or_fail_img")
-
-    //     const pay_success_fail_info = document.getElementById("pay-success-fail-info")
-
-    //     const pay_success_fail_message = document.getElementById("pay-success-fail-message")
-
-    //     const redirect_msg = document.getElementById("redirect-msg")
+        const plag_success_fail_info = document.getElementById("plag_success_fail_info")
 
 
-    //     pay_success_fail_info.textContent = "Transaction Failed"
+        const plag_success_fail_message = document.getElementById("plag_success_fail_message")
 
-    //     pay_success_fail_message.textContent = result.message
 
-    //     pay_suc_or_fail_img.src = "/static/img/x-mark.png"
+        plag_success_fail_info.textContent = "Oops"
 
-    //     payRedirectToDashboard(redirect_msg);
+        plag_success_fail_message.textContent = "Your work has been analysed and there are signs of unoriginality.";
+
+        plag_suc_or_fail_img.src = "/static/img/x-mark.png"
     
 
         
-    // }
+    }
 
 
 
