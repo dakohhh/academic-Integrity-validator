@@ -52,8 +52,10 @@ addAssginmentButton.addEventListener("click", async ()=>{
                 setTimeout(function() {
                     addAssginmentButton.classList.remove('fade-out');
                     addAssginmentButton.innerHTML = '<i class="fa-solid fa-minus"></i> &nbsp;Remove assignment';
+
+                    console.log(file)
         
-                    const assignmentComponent = assigmentComponent(); // Create the assignment component
+                    const assignmentComponent = assigmentComponent(file.name, file.type); // Create the assignment component
                     assignmentField.appendChild(assignmentComponent);
         
                 }, 500);
