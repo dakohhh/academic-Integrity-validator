@@ -23,4 +23,12 @@ def join_assignment(request:HttpRequest):
 
 def submit_assignment(request:HttpRequest):
 
+    if request.method == "POST":
+        file = request.POST.get("file")
+
+        ass = request.POST.get("ass")
+
+        print(request.POST)
+        print(ass)
+
     return render(request, "submit_assignment.html")

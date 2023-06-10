@@ -1,4 +1,4 @@
-import { assigmentComponent } from "./components.js";
+import { assigmentComponent, getFileType } from "./components.js";
 
 import { getCSRFTokenFromCookie } from "./csrf.js";
 
@@ -6,11 +6,39 @@ import { getCSRFTokenFromCookie } from "./csrf.js";
 const assignmentField = document.getElementById("assigment-field")
 
 
+const turnInButton = document.getElementById("turn-in");
 
 
 const addAssginmentButton = document.getElementById("add-assignment-btn");
 
+
 let eventListenerAdded = false;
+
+
+async function submitAssignment(file) {
+
+    const csrf_token = getCSRFTokenFromCookie();
+
+    const formdata = new FormData();
+    formdata.append("file", file);
+    formdata.append("ass", "ass");
+    
+    const  myHeaders = new Headers();
+    myHeaders.append("X-CSRFToken", csrf_token);
+    
+    const response = await fetch(`/submit`, {
+        method: 'POST',
+        body: formdata,
+        headers: myHeaders,  
+        redirect: 'follow'
+    });
+    
+    const result = await response.json();
+
+    return result
+}
+
+
 
 addAssginmentButton.addEventListener("click", async ()=>{
 
@@ -32,6 +60,8 @@ addAssginmentButton.addEventListener("click", async ()=>{
         addAssginmentButton.classList.remove('prm-color-red');
         addAssginmentButton.classList.add('prm-color');
 
+        turnInButton.disabled = true;
+
     } 
       
     else {
@@ -42,20 +72,18 @@ addAssginmentButton.addEventListener("click", async ()=>{
 
     function handleFileChange(event) {
         const file = event.target.files[0];
-        // Process the uploaded file
-        console.log('Selected file:', file);
+
 
         if (file) {
-          // File is successfully uploaded
+
             if (!assignmentField.querySelector('.assigment')) {
                 addAssginmentButton.classList.add('fade-out');
                 setTimeout(function() {
                     addAssginmentButton.classList.remove('fade-out');
                     addAssginmentButton.innerHTML = '<i class="fa-solid fa-minus"></i> &nbsp;Remove assignment';
 
-                    console.log(file)
         
-                    const assignmentComponent = assigmentComponent(file.name, file.type); // Create the assignment component
+                    const assignmentComponent = assigmentComponent(file.name, getFileType(file.type)); 
                     assignmentField.appendChild(assignmentComponent);
         
                 }, 500);
@@ -64,8 +92,8 @@ addAssginmentButton.addEventListener("click", async ()=>{
                 addAssginmentButton.classList.add('prm-color-red');
             }
 
-            // Remove the event listener to prevent multiple components from being added
             fileInput.removeEventListener('change', handleFileChange);
+            turnInButton.disabled = false;
             eventListenerAdded = false
         }
     }
@@ -83,14 +111,15 @@ addAssginmentButton.addEventListener("click", async ()=>{
 
 
 
-const turnInButton = document.getElementById("turn-in")
 
 turnInButton.addEventListener("click", async ()=>{
 
     const assignmentUpload = document.getElementById('file-upload');
 
 
-    console.log(assignmentUpload.files)
+    console.log(assignmentUpload.files[0])
+
+    console.log(await submitAssignment(assignmentUpload.files[0]))
 
 
 

@@ -195,6 +195,10 @@
 
 }
 
+.turn-in-btn:disabled{
+	background-color: grey;
+}
+
 
 .assigment{
 	padding: 8px 15px;
@@ -222,6 +226,8 @@ animation: fadeOut 0.5s forwards;
   .fade-in {
 	animation: fadeIn 0.5s forwards;
 }
+
+
 
 
 @media screen and (max-width: 414px) {
