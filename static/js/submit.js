@@ -117,9 +117,9 @@ turnInButton.addEventListener("click", async ()=>{
     const assignmentUpload = document.getElementById('file-upload');
 
 
-    console.log(assignmentUpload.files[0])
+    const file = assignmentUpload.files[0]
 
-    console.log(await submitAssignment(assignmentUpload.files[0]))
+    console.log(await submitAssignment(file))
 
 
 
