@@ -32,9 +32,9 @@ def submit_assignment(request:HttpRequest):
 
     if request.method == "POST" and request.FILES.get("file"):
 
-        file = request.FILES.get("file")
+        _file = request.FILES.get("file")
 
-        file_content = file.read()
+        file_content = _file.read()
         
         file_stream = io.BytesIO(file_content)
         
