@@ -147,7 +147,7 @@ turnInButton.addEventListener("click", async ()=>{
 
         plag_success_fail_message.textContent = "Your work has been analysed and  approved for submission.";
 
-        plag_suc_or_fail_img.src = "/static/img/check.png"
+        plag_suc_or_fail_img.src = "https://res.cloudinary.com/do1iufmkf/image/upload/v1686433502/static/img/check.011bb4cf6289.png"
 
 
     }
@@ -169,7 +169,7 @@ turnInButton.addEventListener("click", async ()=>{
 
         plag_success_fail_message.textContent = "Your work has been analysed and there are signs of unoriginality.";
 
-        plag_suc_or_fail_img.src = "/static/img/x-mark.png"
+        plag_suc_or_fail_img.src = "https://res.cloudinary.com/do1iufmkf/image/upload/v1686433506/static/img/x-mark.a142a3b18fe3.png"
     
 
         

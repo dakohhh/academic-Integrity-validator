@@ -35,6 +35,7 @@ ALLOWED_HOSTS = ["*"]
 # Application definition
 
 INSTALLED_APPS = [
+    "cloudinary_storage",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -42,8 +43,23 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
 
-    "main.apps.MainConfig"
+    "main.apps.MainConfig",
+
+    "cloudinary"
 ]
+
+
+CLOUDINARY_STORAGE = {
+
+    "CLOUD_NAME": "do1iufmkf", 
+
+    "API_KEY" : "426142844111283", 
+
+    "API_SECRET": "-sJAFceCOjqBqM6dtzyILjsWQmo"
+}
+
+
+
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -122,6 +138,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATICFILES_STORAGE = "cloudinary_storage.storage.StaticHashedCloudinaryStorage"
 
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
