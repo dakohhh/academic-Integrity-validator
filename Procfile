@@ -1,1 +1,1 @@
-web: gunicorn AssignAnalyze.wsgi --log-file .
+web: gunicorn AssignAnalyze.wsgi 
