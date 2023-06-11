@@ -4,9 +4,11 @@ from docx import Document
 from django.conf import settings
 from django.shortcuts import render, redirect
 from django.http.response import HttpResponse
+from django.views.decorators.csrf import csrf_exempt
 from django.http.request import HttpRequest
 from utils.extract_file import extract_words
 from utils.response import CustomResponse
+
 from utils.similatity_model import AssigmeAnalyZer
 
 # Create your views here.
@@ -15,7 +17,7 @@ from utils.similatity_model import AssigmeAnalyZer
 
 
 
-
+@csrf_exempt
 def join_assignment(request:HttpRequest):
 
     if request.method == "POST":
@@ -28,6 +30,8 @@ def join_assignment(request:HttpRequest):
 
 
 
+
+@csrf_exempt
 def submit_assignment(request:HttpRequest):
 
     if request.method == "POST" and request.FILES.get("file"):
@@ -60,7 +64,8 @@ def submit_assignment(request:HttpRequest):
 
         model = AssigmeAnalyZer(assignment, approved_assignments)
 
-        context = {"is_plagiarized": model.is_assignent_plagirised()}
+
+        context = {"is_plagiarized": model.is_assignent_plagirised(), }
 
         return CustomResponse("Analyzed SuccessFull", data=context)
 
